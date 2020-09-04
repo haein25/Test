@@ -17,7 +17,16 @@ public class CafeController {
 	//카페 글 목록 보기 요청 처리 
 	@RequestMapping("/cafe/list")
 	public ModelAndView getList(HttpServletRequest request,	ModelAndView mView) {
+		cafeService.getList(request);
 		mView.setViewName("cafe/list");
+		return mView;
+	}
+	
+	@RequestMapping("/cafe/detail")
+	public ModelAndView detail(HttpServletRequest request,
+			ModelAndView mView) {
+		cafeService.getDetail(request);
+		mView.setViewName("cafe/detail");
 		return mView;
 	}
 
