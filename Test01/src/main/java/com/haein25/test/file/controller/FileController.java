@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.haein25.test.file.dto.FileDto;
@@ -32,6 +33,7 @@ public class FileController {
 		mView.setViewName("file/private/upload_form");
 		return mView;
 	}
+
 	//파일 업로드 요청 처리 
 	@RequestMapping(value = "/file/private/upload", 
 			method = RequestMethod.POST)
@@ -39,6 +41,18 @@ public class FileController {
 			HttpServletRequest request) {
 		fileService.saveFile(dto, mView, request);
 		mView.setViewName("file/private/upload");
+		return mView;
+	}
+	
+	//파일 다운로드 요청 처리
+	@RequestMapping("/file/download")
+	public ModelAndView download(@RequestParam int num,
+			ModelAndView mView) {
+		//mView 에 다운로드 할 파일의 정보를 담고 
+		fileService.getFileData(num, mView);
+		//view 페이지로 이동해서 다운로드 시켜준다. 
+		// @Component("fileDownView") 가 붙어있는 AbstractView 객체를 찾아간다. 
+		mView.setViewName("fileDownView");
 		return mView;
 	}
 
