@@ -3,5 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+	<typeAliases>
+		<typeAlias type="com.haein25.test.users.dto.UsersDto" alias="usersDto"/>
+	</typeAliases>
 
+	<!-- Mapper 등록 -->
+	<mappers>
+		<mapper resource="com/haein25/test/mybatis/UsersMapper.xml"/>
+	</mappers>
 </configuration> 
