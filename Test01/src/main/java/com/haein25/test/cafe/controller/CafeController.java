@@ -50,4 +50,18 @@ public class CafeController {
 		return mView;
 	}
 
+	@RequestMapping("/cafe/private/updateform")
+	public ModelAndView updateform(HttpServletRequest request,
+			ModelAndView mView) {
+		cafeService.getDetail(request);
+		mView.setViewName("cafe/updateform");
+		return mView;
+	}
+	@RequestMapping("/cafe/private/update")
+	public ModelAndView update(CafeDto dto, ModelAndView mView) {
+		cafeService.updateContent(dto);
+		mView.setViewName("cafe/update");
+		return mView;
+	}
+
 }
