@@ -1,5 +1,7 @@
 package com.haein25.test.file.service;
 
-public interface FileService {
+import javax.servlet.http.HttpServletRequest;
 
+public interface FileService {
+	public void getList(HttpServletRequest request);
 }

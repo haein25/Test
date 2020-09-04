@@ -1,5 +1,10 @@
 package com.haein25.test.file.dao;
 
-public interface FileDao {
+import java.util.List;
 
+import com.haein25.test.file.dto.FileDto;
+
+public interface FileDao {
+	public List<FileDto> getList(FileDto dto);
+	public int getCount(FileDto dto);
 }
