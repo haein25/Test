@@ -28,16 +28,6 @@ public class UsersDaoImpl implements UsersDao{
 		session.insert("users.insert", dto);
 	}
 
-	@Override
-	public boolean isValid(UsersDto dto) {
-		String id=session.selectOne("users.isValid", dto);
-		if(id==null) {
-			return false;
-		}else {
-			return true;
-		}
-	}
-
 	//인자로 전달되는 id 에 해당되는 사용자 정보를 리턴하는 메소드 
 	@Override
 	public UsersDto getData(String id) {
@@ -56,14 +46,9 @@ public class UsersDaoImpl implements UsersDao{
 	}
 
 	@Override
-	public boolean updatePwd(UsersDto dto) {
+	public void updatePwd(UsersDto dto) {
 		//update 문의 영향을 받은 row 의 갯수가 리턴된다.
-		int result=session.update("users.updatePwd", dto);
-		if(result>0) {
-			return true;
-		}else {
-			return false;
-		}
+		session.update("users.updatePwd", dto);
 	}
 
 }
