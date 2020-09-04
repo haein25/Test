@@ -30,7 +30,6 @@
 			자세히 보기 입니다.
 		</p>
 	</c:if>
-
 	<c:if test="${dto.prevNum ne 0 }">
 		<a class="btn btn-outline-info btn-sm" href="detail.do?num=${dto.prevNum }&condition=${condition}&keyword=${encodedK}">
 			<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -68,7 +67,7 @@
 	</table>
 	<div class="contents">${dto.content }</div>
 	<a href="list.do">목록 보기</a>
-
+	
 	<c:if test="${dto.writer eq id }">
 		<a class="btn btn-outline-warning btn-sm" href="private/updateform.do?num=${dto.num }">
 			<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -77,13 +76,14 @@
 			</svg>
 			수정
 		</a>
-				<a class="btn btn-outline-danger btn-sm" href="javascript:deleteConfirm();">
+		<a class="btn btn-outline-danger btn-sm" href="javascript:deleteConfirm();">
 			<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   				<path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
 			</svg>
 			삭제
 		</a>			
 	</c:if>
+
 	<!-- 댓글 목록 -->
 	<div class="comments">
 		<ul>
