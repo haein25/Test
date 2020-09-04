@@ -6,11 +6,13 @@
 	<typeAliases>
 		<typeAlias type="com.haein25.test.users.dto.UsersDto" alias="usersDto"/>
 		<typeAlias type="com.haein25.test.file.dto.FileDto" alias="fileDto"/>
+		<typeAlias type="com.haein25.test.cafe.dto.CafeDto" alias="cafeDto"/>
 	</typeAliases>
 
 	<!-- Mapper 등록 -->
 	<mappers>
 		<mapper resource="com/haein25/test/mybatis/UsersMapper.xml"/>
 		<mapper resource="com/haein25/test/mybatis/FileMapper.xml"/>
+		<mapper resource="com/haein25/test/mybatis/CafeMapper.xml"/>
 	</mappers>
 </configuration> 
