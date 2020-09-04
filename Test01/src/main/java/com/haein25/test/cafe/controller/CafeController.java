@@ -29,5 +29,12 @@ public class CafeController {
 		mView.setViewName("cafe/detail");
 		return mView;
 	}
+	
+	@RequestMapping("/cafe/private/insertform")
+	public ModelAndView insertForm(ModelAndView mView) {
+
+		mView.setViewName("cafe/insertform");
+		return mView;
+	}
 
 }
