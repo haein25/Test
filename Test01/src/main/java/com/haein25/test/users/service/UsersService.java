@@ -2,8 +2,10 @@ package com.haein25.test.users.service;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.haein25.test.users.dto.UsersDto;
@@ -14,4 +16,6 @@ public interface UsersService {
 	public void loginProcess(UsersDto dto, ModelAndView mView, HttpSession session);
 	public void getInfo(HttpSession session, ModelAndView mView);
 	public void deleteUser(HttpSession session);
+	public Map<String, Object> saveProfileImage(HttpServletRequest request, MultipartFile mFile);
+	public void updateUser(HttpSession session, UsersDto dto);
 }

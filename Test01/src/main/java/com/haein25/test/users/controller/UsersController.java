@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.haein25.test.users.dto.UsersDto;
@@ -96,6 +97,38 @@ public class UsersController {
 		service.deleteUser(request.getSession());
 		//view 페이지로 forward 이동해서 응답
 		mView.setViewName("users/private/delete");
+		return mView;
+	}
+	
+	//회원정보 수정폼 요청 처리 
+	@RequestMapping("/users/private/updateform")
+	public ModelAndView updateForm(HttpServletRequest request,
+			ModelAndView mView) {
+		service.getInfo(request.getSession(), mView);
+		mView.setViewName("users/private/updateform");
+		return mView;
+	}
+
+	// ajax 프로필 사진 업로드 요청 처리
+	@RequestMapping("/users/private/profile_upload")
+	@ResponseBody
+	public Map<String, Object> profile_upload
+				(HttpServletRequest request,@RequestParam MultipartFile image){
+		//service 객체를 이용해서 이미지를 upload 폴더에 저장하고 Map 을 리턴 받는다.
+		Map<String, Object> map=service.saveProfileImage(request, image);
+		//{"imageSrc":"/upload/xxx.jpg"} 형식의 JSON 문자열을 출력하기 위해
+		//Map 을 @ResponseBody 로 리턴해준다. 
+		return map;
+	}
+	
+	//개인 정보 수정 반영 요청 처리
+	@RequestMapping("/users/private/update")
+	public ModelAndView update(HttpServletRequest request, 
+			UsersDto dto, ModelAndView mView) {
+		//service 객체를 이용해서 개인정보를 수정한다.
+		service.updateUser(request.getSession(), dto);
+		//개인 정보 보기 페이지로 리다일렉트 이동한다.
+		mView.setViewName("redirect:/users/private/info.do");
 		return mView;
 	}
 }
