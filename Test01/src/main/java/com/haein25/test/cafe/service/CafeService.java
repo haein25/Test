@@ -1,5 +1,7 @@
 package com.haein25.test.cafe.service;
 
-public interface CafeService {
+import javax.servlet.http.HttpServletRequest;
 
+public interface CafeService {
+	public void getList(HttpServletRequest request);
 }
